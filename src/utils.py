@@ -12,6 +12,16 @@ def get_list_json():
         return result
 
 
+def filter_list_json():
+    filter_list = []
+    for state in get_list_json():
+        if state["state"] == "EXECUTED":
+            filter_list.append(state)
+    return filter_list
+
+
 def sort_result_json():
-    return sorted(get_list_json(), key=lambda x: x['date'], reverse=True)
+    return sorted(filter_list_json(), key=lambda x: x['date'], reverse=True)
+
+
 
