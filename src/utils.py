@@ -14,6 +14,7 @@ def get_list_json():
 
 def filter_list_json():
     filter_list = []
+    list_json = get_list_json().get("state", None)
     for state in get_list_json():
         if state["state"] == "EXECUTED":
             filter_list.append(state)
@@ -24,4 +25,6 @@ def sort_result_json():
     return sorted(filter_list_json(), key=lambda x: x['date'], reverse=True)
 
 
+def take_operations():
+    return sort_result_json()[:6]
 
